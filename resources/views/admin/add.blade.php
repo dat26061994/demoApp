@@ -1,4 +1,4 @@
-@extends('layoust.admin')
+@extends('layouts.admin')
 @section('content')
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -57,4 +57,4 @@
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>
-                @endsection
+@endsection

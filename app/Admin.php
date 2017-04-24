@@ -28,4 +28,15 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function getAllAdmin(){
+        $admin = Admin::select('id','name','email','username')->get();
+        return $admin;
+    }
+
+    public function editAdmin($id){
+        $admin = Admin::find($id);
+        return $admin;
+    }
 }

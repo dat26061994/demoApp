@@ -97,10 +97,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Admin<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">List Admin</a>
+                                    <a href="{{ route('admin.getList') }}">List Admin</a>
                                 </li>
                                 <li>
-                                    <a href="">Add Admin</a>
+                                    <a href="{{ route('admin.getAdd') }}">Add Admin</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

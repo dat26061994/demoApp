@@ -3,11 +3,12 @@
 use App\Http\Requests;
 use App\Http\Requests\ProductRequest;
 use App\Http\Controllers\Controller;
-use App\product;
+use App\Product;
 use Auth;
 use Illuminate\Http\Request;
 use File;
 use input;
+
 class ProductController extends Controller {
 	
 	 public function __construct()
@@ -15,19 +16,23 @@ class ProductController extends Controller {
         $this->middleware('auth:admin');
     }
 
-	public function getList(){
-		$data = product::select('id','name','orders','status','price','created_at','image','updated_at')->orderBy('id','DESC')->get()->toArray();
+	public function getList()
+	{
+		$product = new Product;
+		$data = $product->getListProduct();
 		return view('admin.product.list',compact('data'));
 	}
 
-		public function getAdd(){
+	public function getAdd()
+	{
 		
 		return view('admin.product.add');
 	}
 
-	public function postAdd(ProductRequest $request){
+	public function postAdd(ProductRequest $request)
+	{
 		$file_name = $request->file('fImages')->getClientOriginalName();
-		$product = new product;
+		$product = new Product;
 		
 		$product->name = $request->txtName;
 		$product->price = $request->txtPrice;
@@ -41,20 +46,24 @@ class ProductController extends Controller {
 		return redirect()->route('admin.product.getList')->with(['flash_level'=>'success','flash_message'=>'Success!! Complete Add Product']);
 	}
 
-	public function getDelete($id){
-		$product = product::find($id);
+	public function getDelete($id)
+	{
+		$product = Product::find($id);
 		File::delete('resources/upload/'.$product->image);
 		$product->delete($id);
 		return redirect()->route('admin.product.getList')->with(['flash_level'=>'success','flash_message'=>'Success!! Delete a Product']);
 	}
 
-	public function getEdit($id){
+	public function getEdit($id)
+	{
 		
-		$product = product::find($id)->toArray();
+		$product = Product::find($id)->toArray();
 		return view('admin.product.edit',compact('product','id'));
 	}
 
-	public function postEdit($id,Request $request){
+	public function postEdit($id,Request $request)
+	{
+		$productModel = new Product;
 		$this->validate($request,
 			[ 
 				'txtName'	=>	'required|max:100',
@@ -76,7 +85,7 @@ class ProductController extends Controller {
 
 			);
 
-		$product = product::find($id);	
+		$product = $productModel->findProduct($id);	
 		
 		$product->name = $request->txtName;
 		$product->price = $request->txtPrice;
@@ -87,11 +96,13 @@ class ProductController extends Controller {
 		$product->user_id = Auth::user()->id;
 		$img_current = 'resources/upload/'.$request->img_current;
 		
-		if (!empty($request->file('fImages'))) {
+		if (!empty($request->file('fImages'))) 
+		{
 			$file_name = $request->file('fImages')->getClientOriginalName();
 			$product->image = $file_name;
 			$request->file('fImages')->move('resources/upload/',$file_name);
-			if (File::exists($img_current)) {
+			if (File::exists($img_current)) 
+			{
 				File::delete($img_current);
 			}
 		}

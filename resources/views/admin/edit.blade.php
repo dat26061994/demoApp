@@ -44,19 +44,7 @@
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="email" class="form-control" name="txtEmail" placeholder="Please Enter Email" value="{{ old('txtEmail',isset($admin) ? $admin['email'] :null) }}" />
-                            </div>
-                            @if((Auth::user()->id) == 1)
-                                <div class="form-group">
-                                <label>User Level</label>
-                                <label class="radio-inline">
-                                    <input name="rdoLevel" value="1" checked="" type="radio">Admin
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="rdoLevel" value="2" type="radio">Member
-                                </label>
-                            </div>
-                            @endif
-                            
+                            </div>                         
                             <button type="submit" class="btn btn-default">User Edit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
