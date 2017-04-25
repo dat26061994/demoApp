@@ -17,7 +17,10 @@ class Admin extends Authenticatable
     protected $guard = 'admin';
 
     protected $fillable = [
-        'username','name', 'email', 'password'
+        'username',
+        'name',
+        'email',
+        'password'
     ];
 
     /**
@@ -26,16 +29,19 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
 
-    public function getAllAdmin(){
-        $admin = Admin::select('id','name','email','username')->get();
+    public function getAllAdmin()
+    {
+        $admin = Admin::select('id', 'name', 'email', 'username')->get();
         return $admin;
     }
 
-    public function editAdmin($id){
+    public function editAdmin($id)
+    {
         $admin = Admin::find($id);
         return $admin;
     }
