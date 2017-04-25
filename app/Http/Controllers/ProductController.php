@@ -52,7 +52,8 @@ class ProductController extends Controller
 
     public function getDelete($id)
     {
-        $product = Product::find($id);
+        $productModel = new Product;
+        $product = $productModel->findProduct($id);
         File::delete('resources/upload/' . $product->image);
         $product->delete($id);
         return redirect()->route('admin.product.getList')->with([
@@ -63,8 +64,8 @@ class ProductController extends Controller
 
     public function getEdit($id)
     {
-
-        $product = Product::find($id)->toArray();
+        $productModel = new Product;
+        $product = $productModel->findProduct($id)->toArray();
         return view('admin.product.edit', compact('product', 'id'));
     }
 

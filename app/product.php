@@ -46,7 +46,7 @@ class Product extends Model
         return $product;
     }
 
-    public function findProduct()
+    public function findProduct($id)
     {
         $findProduct = Product::find($id);
         return $findProduct;
