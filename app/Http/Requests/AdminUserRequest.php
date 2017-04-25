@@ -25,7 +25,7 @@ class AdminUserRequest extends FormRequest
     {
         return [
             'txtName'   =>  'required|max:100',
-            'txtUser'   =>  'required|unique:admins,username|between:3,50',
+            'txtUser'   =>  'required|unique:admins,username|between:6,20',
             'txtEmail'  =>  'required|email|unique:admins,email|max:100',
             'txtPass'   =>  'required|max:50',
             'txtRePass' =>  'required|same:txtPass'
@@ -37,7 +37,7 @@ class AdminUserRequest extends FormRequest
             'txtName.required'  =>  'Please enter your name !!',
             'txtUser.required'  =>  'Please enter the User Name !!',
             'txtUser.unique'    =>  'The user has already been taken!! ',
-            'txtUser.between'   =>  'User Name must between 3 to 50 digits!!',
+            'txtUser.between'   =>  'User Name must between 6 to 20 digits!!',
             'txtEmail.required' =>  'Please enter your email!!',
             'txtEmail.unique'   =>  'The Email has already been taken!!',
             'txtEmail.max'      =>  'Email is max 100 digits!!',

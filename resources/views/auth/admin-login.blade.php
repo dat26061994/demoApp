@@ -18,15 +18,18 @@
     <link href="{{ url('public/admin/dist/css/sb-admin-2.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="{{ url('public/admin/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('public/admin/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+          type="text/css">
     <!-- DataTables CSS -->
-    <link href="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}"
+          rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="{{ url('public/admin/bower_components/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
+    <link href="{{ url('public/admin/bower_components/datatables-responsive/css/dataTables.responsive.css') }}"
+          rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -39,7 +42,8 @@
                             <label for="username" class="col-md-4 control-label">User Name</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="username" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+                                <input id="username" type="username" class="form-control" name="username"
+                                       value="{{ old('username') }}" required autofocus>
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
@@ -64,24 +68,11 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
                             </div>
                         </div>
                     </form>
@@ -91,29 +82,29 @@
     </div>
 </div>
 <!-- jQuery -->
-    <script src="{{ url('public/admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ url('public/admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ url('public/admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ url('public/admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ url('public/admin/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="{{ url('public/admin/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="{{ url('public/admin/dist/js/sb-admin-2.js') }}"></script>
+<!-- Custom Theme JavaScript -->
+<script src="{{ url('public/admin/dist/js/sb-admin-2.js') }}"></script>
 
-    <!-- DataTables JavaScript -->
-    <script src="{{ url('public/admin/bower_components/DataTables/media/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
+<!-- DataTables JavaScript -->
+<script src="{{ url('public/admin/bower_components/DataTables/media/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script src="{{ url('public/admin/js/myscript.js') }}"></script>
-    <script>
-    $(document).ready(function() {
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script src="{{ url('public/admin/js/myscript.js') }}"></script>
+<script>
+    $(document).ready(function () {
         $('#dataTables-example').DataTable({
-                responsive: true
+            responsive: true
         });
     });
-    </script>
+</script>
 </body>
 </html>
