@@ -29,4 +29,16 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function getList()
+    {
+        $user = User::select('id', 'name', 'email')->get();
+        return $user;
+    }
+
+    public function findUser($id)
+    {
+        $user = User::find($id);
+        return $user;
+    }
 }
