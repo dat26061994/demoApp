@@ -2,13 +2,13 @@
 @section('content')
         <!-- Page Content -->
 <div id="page-wrapper">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-xs-12 col-lg-12">
                 <h1 class="page-header">Admin
                     <small>List</small>
                 </h1>
-            </div>
+
             @if(Session::has('flash_message'))
                 <div class="alert alert-{!! Session::get('flash_level') !!}">
                     {!! Session::get('flash_message') !!}
@@ -23,7 +23,6 @@
                         <th>UserName</th>
                         <th>Email</th>
                         <th>Delete</th>
-
                         <th>Edit</th>
 
                     </tr>
@@ -50,6 +49,7 @@
                     @endforeach
                     </tbody>
                 </table>
+            </div>
         </div>
         <!-- /.row -->
     </div>

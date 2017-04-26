@@ -21,11 +21,11 @@
                 <thead>
                 <tr align="center">
                     <th>ID</th>
-                    <th>Image</th>
+                    <th class="mobile_display">Image</th>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Date</th>
-                    <th>Status</th>
+                    <th class="mobile_display">Date</th>
+                    <th class="mobile_display">Status</th>
                     <th>Delete</th>
                     <th>Edit</th>
                 </tr>
@@ -36,13 +36,13 @@
                     <?php $stt++?>
                     <tr class="odd gradeX" align="center">
                         <td>{!!$stt!!}</td>
-                        <td><img src="{{ url('resources/upload/'.$item['image']) }}" alt=""
+                        <td class="mobile_display"><img src="{{ url('resources/upload/'.$item['image']) }}" alt=""
                                  style="height:80px;width:80px;"></td>
-                        <td>{!! $item["name"] !!}</td>
+                        <td class="mobile_display">{!! $item["name"] !!}</td>
                         <td>{!! number_format($item["price"]) !!}$</td>
                         <td>{{ $item["updated_at"] }}</td>
 
-                        <td>
+                        <td class="mobile_display">
                             <?php
                             if ($item["status"] == 1) {
                                 echo "Active";

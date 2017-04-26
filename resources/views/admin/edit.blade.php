@@ -50,7 +50,7 @@
                                value="{{ old('txtEmail',isset($admin) ? $admin['email'] :null) }}"/>
                     </div>
                     <button type="submit" class="btn btn-default">User Edit</button>
-                    <button type="reset" class="btn btn-default">Reset</button>
+
                     <form>
             </div>
 @endsection
