@@ -22,28 +22,17 @@
 </head><!--/head-->
 
 <body>
-<header id="header"><!--header-->
-    @include('user.block.header')
-</header>
-
-<section id="advertisement">
-    <div class="container">
-        <img src="{{ url('public/images/shop/advertisement.jpg') }}" alt=""/>
+<div class="container text-center">
+    <div class="logo-404">
+        <a href="{{ url('/') }}"><img src="{{ url('public/images/home/logo.png') }}" alt=""/></a>
     </div>
-</section>
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                @include('user.block.leftslidebar')
-            </div>
-
-            <div class="col-sm-9 padding-right">
-                @yield('content')
-            </div>
-        </div>
-</section>
+    <div class="content-404">
+        <img src="{{ url('public/images/home/404.png') }}" class="img-responsive" alt=""/>
+        <h1><b>OPPS!</b> We Couldn’t Find this Page</h1>
+        <p>Uh... So it looks like you brock something. The page you are looking for has up and Vanished.</p>
+        <h2><a href="{{ url('/') }}">Bring me back Home</a></h2>
+    </div>
+</div>
 
 <script src="{{ url('public/user/js/jquery.js') }}"></script>
 <script src="{{ url('public/user/js/price-range.js') }}"></script>

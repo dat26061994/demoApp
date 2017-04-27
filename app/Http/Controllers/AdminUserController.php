@@ -75,12 +75,13 @@ class AdminUserController extends Controller
         $adminModel = new Admin;
         $this->validate($request,
             [
-                'txtName' => 'required',
+                'txtName' => 'required|regex:/(^[A-Za-z ]+$)+/',
                 'txtRePass' => 'same:txtPass',
                 'txtEmail' => 'required'
             ],
             [
                 'txtName.required' => 'Please enter your name',
+                'txtName.regex' => 'The name only contain letters and spaces.',
                 'txtRePass.same' => 'New Pass and RePass do not match',
                 'txtEmail.required' => 'Email not null'
             ]
