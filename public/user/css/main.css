@@ -12,6 +12,11 @@ body {
   position: relative;
   font-weight:400px;
 }
+@media (max-width: 480px) {
+  .mobile_display {
+    display: none;
+  }
+}
 .product_price{
   color: #FE980F;
 }

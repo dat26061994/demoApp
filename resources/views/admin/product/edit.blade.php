@@ -38,7 +38,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Images Curent</label>
                         <input type="hidden" value="{{ $product['image'] }}" name="img_current" class="img_current">
                         <img src="{{ url('resources/upload/'.$product['image']) }}" alt=""
                              style="height:100px;width:100px">
@@ -68,7 +67,7 @@
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default">Product Edit</button>
-                    <button type="reset" class="btn btn-default">Reset</button>
+
                     <form>
             </div>
 @endsection

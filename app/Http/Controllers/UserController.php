@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Hash;
 use Auth;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -60,24 +61,36 @@ class UserController extends Controller
     {
         $userModel = new User();
         $user = $userModel->findUser($id);
-        return view('admin.user.edit', compact('user', 'id'));
+        $isset = count($user);
+        if ($isset > 0) {
+            return view('admin.user.edit', compact('user', 'id'));
+        } else {
+
+        }
+        return redirect()->route('admin.user.getList')->with([
+            'flash_level' => 'danger',
+            'flash_message' => 'Do not find the User'
+        ]);
     }
 
     public function postEdit($id, Request $request)
     {
+        $userModel = new User();
         $this->validate($request,
             [
-                'txtName' => 'required',
+                'txtName' => 'required|max:100',
                 'txtRePass' => 'same:txtPass',
-                'txtEmail' => 'required'
+                'txtEmail' => 'required|email',
             ],
             [
                 'txtName.required' => 'Please enter your name',
+                'txtName.max' => 'Name is max 100 digits',
                 'txtRePass.same' => 'New Pass and RePass do not match',
-                'txtEmail.required' => 'Email not null'
+                'txtEmail.required' => 'Email not null',
+                'txtEmail.unique' => 'Email is exists'
             ]
         );
-        $userModel = new User();
+
         $user = $userModel->findUser($id);
         $user->name = $request->txtName;
         $user->password = Hash::make($request->txtPass);

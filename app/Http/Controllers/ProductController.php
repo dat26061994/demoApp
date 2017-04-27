@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Http\Request;
 use File;
 use input;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -65,8 +66,17 @@ class ProductController extends Controller
     public function getEdit($id)
     {
         $productModel = new Product;
-        $product = $productModel->findProduct($id)->toArray();
-        return view('admin.product.edit', compact('product', 'id'));
+        $product = $productModel->findProduct($id);
+        $isset = count($product);
+        if ($isset > 0) {
+            return view('admin.product.edit', compact('product', 'id'));
+        } else {
+            return redirect()->route('admin.product.getList')->with([
+                'flash_level' => 'danger',
+                'flash_message' => 'Do not find Product'
+            ]);
+        }
+
     }
 
     public function postEdit($id, Request $request)
@@ -75,16 +85,19 @@ class ProductController extends Controller
         $this->validate($request,
             [
                 'txtName' => 'required|max:100',
-                'txtPrice' => 'required|integer|max:10000000000',
+                Rule::unique('products')->ignore($productModel->id),
+                'txtPrice' => 'required|numeric|max:10000000000',
+                'txtDescription' => 'max:300',
                 'fImages' => 'mimes:jpeg,jpg,png,gif|max:10240'
             ],
             [
-
+                'txtName.unique' => 'The product name is exists',
                 'txtName.required' => 'Product name not null',
                 'txtName.max' => 'Product Name max is 100 digits',
                 'txtPrice.required' => 'Price not null',
-                'txtPrice.integer' => 'Price must be number',
+                'txtPrice.numeric' => 'Price must be number',
                 'txtPrice.max' => 'Price is so much',
+                'txtDescription.max' => 'Description is max 300 ditgits',
                 'fImages.mimes' => 'This is not image(jpeg,gif,png or jpg)',
                 'fImages.max' => 'The image size is so much'
             ]
