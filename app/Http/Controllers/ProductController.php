@@ -67,8 +67,8 @@ class ProductController extends Controller
     {
         $productModel = new Product;
         $product = $productModel->findProduct($id);
-        $isset = count($product);
-        if ($isset > 0) {
+        $count = count($product);
+        if ($count > 0) {
             return view('admin.product.edit', compact('product', 'id'));
         } else {
             return redirect()->route('admin.product.getList')->with([

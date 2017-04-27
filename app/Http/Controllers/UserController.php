@@ -61,16 +61,16 @@ class UserController extends Controller
     {
         $userModel = new User();
         $user = $userModel->findUser($id);
-        $isset = count($user);
-        if ($isset > 0) {
+        $count = count($user);
+        if ($count > 0) {
             return view('admin.user.edit', compact('user', 'id'));
         } else {
-
+            return redirect()->route('admin.user.getList')->with([
+                'flash_level' => 'danger',
+                'flash_message' => 'Do not find the User'
+            ]);
         }
-        return redirect()->route('admin.user.getList')->with([
-            'flash_level' => 'danger',
-            'flash_message' => 'Do not find the User'
-        ]);
+
     }
 
     public function postEdit($id, Request $request)
