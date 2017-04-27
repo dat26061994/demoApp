@@ -21,11 +21,11 @@
                 <thead>
                 <tr align="center">
                     <th>ID</th>
-                    <th class="mobile_display">Image</th>
+                    <th class="">Image</th>
                     <th>Name</th>
                     <th>Price</th>
-                    <th class="mobile_display">Date</th>
-                    <th class="mobile_display">Status</th>
+                    <th class="">Date</th>
+                    <th class="">Status</th>
                     <th>Delete</th>
                     <th>Edit</th>
                 </tr>
@@ -38,11 +38,11 @@
                         <td>{!!$stt!!}</td>
                         <td class="mobile_display"><img src="{{ url('resources/upload/'.$item['image']) }}" alt=""
                                  style="height:80px;width:80px;"></td>
-                        <td class="mobile_display">{!! $item["name"] !!}</td>
+                        <td class="">{!! $item["name"] !!}</td>
                         <td>{!! number_format($item["price"]) !!}$</td>
                         <td>{{ $item["updated_at"] }}</td>
 
-                        <td class="mobile_display">
+                        <td class="">
                             <?php
                             if ($item["status"] == 1) {
                                 echo "Active";

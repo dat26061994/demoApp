@@ -84,19 +84,19 @@ class ProductController extends Controller
         $productModel = new Product;
         $this->validate($request,
             [
-                'txtName' => 'required|max:100',
-                Rule::unique('products')->ignore($productModel->id),
+                'txtName' => 'required|max:100|regex:/(^[A-Za-z ]+$)+/',
                 'txtPrice' => 'required|numeric|max:10000000000',
-                'txtDescription' => 'max:300',
+                'txtDescription' => 'max:300|regex:/(^[A-Za-z ]+$)+/',
                 'fImages' => 'mimes:jpeg,jpg,png,gif|max:10240'
             ],
             [
-                'txtName.unique' => 'The product name is exists',
                 'txtName.required' => 'Product name not null',
+                'txtName.regex' =>  'Product name only contain letters and spaces.',
                 'txtName.max' => 'Product Name max is 100 digits',
                 'txtPrice.required' => 'Price not null',
                 'txtPrice.numeric' => 'Price must be number',
                 'txtPrice.max' => 'Price is so much',
+                'txtDescription.regex' =>  'Description only contain letters and spaces.',
                 'txtDescription.max' => 'Description is max 300 ditgits',
                 'fImages.mimes' => 'This is not image(jpeg,gif,png or jpg)',
                 'fImages.max' => 'The image size is so much'

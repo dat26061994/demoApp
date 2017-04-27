@@ -78,12 +78,13 @@ class UserController extends Controller
         $userModel = new User();
         $this->validate($request,
             [
-                'txtName' => 'required|max:100',
+                'txtName' => 'required|max:100|regex:/(^[A-Za-z ]+$)+/',
                 'txtRePass' => 'same:txtPass',
                 'txtEmail' => 'required|email',
             ],
             [
                 'txtName.required' => 'Please enter your name',
+                'txtName.regex'  =>  'The name only contain letters and spaces.',
                 'txtName.max' => 'Name is max 100 digits',
                 'txtRePass.same' => 'New Pass and RePass do not match',
                 'txtEmail.required' => 'Email not null',

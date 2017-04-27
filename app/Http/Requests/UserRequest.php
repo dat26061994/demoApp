@@ -22,8 +22,7 @@ class UserRequest extends Request {
 	public function rules()
 	{
 		return [
-			'txtName'	=>	'required|max:100',
-			
+			'txtName'	=>	'required|max:100|',
 			'txtEmail'	=>	'required|email|unique:users,email|max:100',
 			'txtPass'	=>	'required|max:50',
 			'txtRePass'	=>	'required|same:txtPass'
