@@ -61,16 +61,16 @@ class UserController extends Controller
     {
         $userModel = new User();
         $user = $userModel->findUser($id);
-        $isset = count($user);
-        if ($isset > 0) {
+        $count = count($user);
+        if ($count > 0) {
             return view('admin.user.edit', compact('user', 'id'));
         } else {
-
+            return redirect()->route('admin.user.getList')->with([
+                'flash_level' => 'danger',
+                'flash_message' => 'Do not find the User'
+            ]);
         }
-        return redirect()->route('admin.user.getList')->with([
-            'flash_level' => 'danger',
-            'flash_message' => 'Do not find the User'
-        ]);
+
     }
 
     public function postEdit($id, Request $request)
@@ -78,12 +78,14 @@ class UserController extends Controller
         $userModel = new User();
         $this->validate($request,
             [
-                'txtName' => 'required|max:100',
+                'txtName' => 'required|max:100|regex:/(^[A-Za-z ]+$)+/',
                 'txtRePass' => 'same:txtPass',
                 'txtEmail' => 'required|email',
+                'txtEmail' => 'unique:users,email,' . $id
             ],
             [
                 'txtName.required' => 'Please enter your name',
+                'txtName.regex' => 'The name only contain letters and spaces.',
                 'txtName.max' => 'Name is max 100 digits',
                 'txtRePass.same' => 'New Pass and RePass do not match',
                 'txtEmail.required' => 'Email not null',

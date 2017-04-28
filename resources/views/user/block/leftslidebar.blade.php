@@ -15,7 +15,7 @@
 
             <div class="row">
                 <div class="col-md-5">
-                    <a href="" class="thumbnail"><img src="{{ url('resources/upload/'.$item_seller->image) }}"
+                    <a href="{{ url('product',[$item_seller->id,$item_seller->name]) }}" class="thumbnail"><img src="{{ url('resources/upload/'.$item_seller->image) }}"
                                                       alt=""></a>
                 </div>
                 <div class="col-md-7">
@@ -33,7 +33,7 @@
 
             <div class="row">
                 <div class="col-md-5">
-                    <a href="" class="thumbnail"><img src="{{ url('resources/upload/'.$item_product_latest->image) }}"
+                    <a href="{{ url('product',[$item_product_latest->id,$item_product_latest->name]) }}" class="thumbnail"><img src="{{ url('resources/upload/'.$item_product_latest->image) }}"
                                                       alt=""></a>
                 </div>
                 <div class="col-md-7">

@@ -12,8 +12,6 @@
                                         src="{{ url('resources/upload/'.$item->image) }}" alt=""/></a>
                             <h2>${{ $item->price }}</h2>
                             <a href="{{ url('product',[$item->id,$item->name]) }}"><p>{{ $item->name }}</p></a>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-                                cart</a>
                         </div>
 
                     </div>

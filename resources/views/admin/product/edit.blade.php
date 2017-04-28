@@ -12,29 +12,29 @@
             </div>
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
-                @if(count($errors)>0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>
-                                    {{ $error }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+
                 <form action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <div class="form-group">
+                    <div class="form-group"{{ $errors->has('txtName') ? ' has-error' : '' }}>
                         <label>Name</label>
                         <input class="form-control" name="txtName" placeholder="Please Enter Username"
                                value="{{ old('txtName',isset($product) ? $product['name'] :null) }}"/>
+                        @if ($errors->has('txtName'))
+                            <div class="alert alert-danger">
+                                <span>{{ $errors->first('txtName') }}</span>
+                                </div>
+                        @endif
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"{{ $errors->has('txtPrice') ? ' has-error' : '' }}>
                         <label>Price</label>
                         <input class="form-control" name="txtPrice" placeholder="Please Enter Price"
                                value="{{ old('txtPrice',isset($product) ? $product['price'] :null) }}"/>
+                        @if ($errors->has('txtPrice'))
+                            <div class="alert alert-danger">
+                                <span>{{ $errors->first('txtPrice') }}</span>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="form-group">
@@ -42,15 +42,25 @@
                         <img src="{{ url('resources/upload/'.$product['image']) }}" alt=""
                              style="height:100px;width:100px">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"{{ $errors->has('fImages') ? ' has-error' : '' }}>
                         <label>Images</label>
                         <input type="file" name="fImages">
+                        @if ($errors->has('fImages'))
+                            <div class="alert alert-danger">
+                                <span>{{ $errors->first('fImages') }}</span>
+                            </div>
+                        @endif
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group"{{ $errors->has('txtDescription') ? ' has-error' : '' }}>
                         <label>Product Description</label>
                         <textarea class="form-control" rows="3"
                                   name="txtDescription">{{ old('txtDescription',isset($product) ? $product['description'] :null) }}</textarea>
+                        @if ($errors->has('txtDescription'))
+                            <div class="alert alert-danger">
+                                <span>{{ $errors->first('txtDescription') }}</span>
+                            </div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Orders</label>
