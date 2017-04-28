@@ -23,7 +23,7 @@
                         @if ($errors->has('txtName'))
                             <div class="alert alert-danger">
                                 <span>{{ $errors->first('txtName') }}</span>
-                                </div>
+                            </div>
                         @endif
                     </div>
                     <div class="form-group"{{ $errors->has('txtPrice') ? ' has-error' : '' }}>

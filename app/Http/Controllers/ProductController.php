@@ -91,7 +91,7 @@ class ProductController extends Controller
             [
                 'txtName' => 'required|max:100|regex:/(^[A-Za-z0-9 ]+$)+/|unique:products,name,' . $id,
                 'txtPrice' => 'required|numeric|max:10000000000',
-                'txtDescription' => 'max:300',
+                'txtDescription' => 'required|max:300',
                 'fImages' => 'mimes:jpeg,jpg,png,gif|max:10240'
             ],
             [
@@ -102,6 +102,7 @@ class ProductController extends Controller
                 'txtPrice.required' => 'Price not null',
                 'txtPrice.numeric' => 'Price must be number',
                 'txtPrice.max' => 'Price is so much',
+                'txtDescription.required'  =>   'Please enter the description',
                 'txtDescription.max' => 'Description is max 300 ditgits',
                 'fImages.mimes' => 'This is not image(jpeg,gif,png or jpg)',
                 'fImages.max' => 'The image size is so much'

@@ -96,7 +96,7 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-                    <li>
+                    {{--<li>
                         <a href="#"><i class="fa fa-users fa-fw"></i> Admin<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -107,7 +107,7 @@
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
-                    </li>
+                    </li>--}}
                     <li>
                         <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

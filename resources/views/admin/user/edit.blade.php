@@ -45,10 +45,7 @@
                         <input type="email" class="form-control" name="txtEmail" placeholder="Please Enter Email"
                                value="{{ old('txtEmail',isset($user) ? $user['email'] :null) }}"/>
                     </div>
-
-
                     <button type="submit" class="btn btn-default">User Edit</button>
-                    <button type="reset" class="btn btn-default">Reset</button>
                     <form>
             </div>
 @endsection
