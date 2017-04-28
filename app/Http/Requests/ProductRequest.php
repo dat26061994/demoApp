@@ -23,12 +23,10 @@ class ProductRequest extends Request
     public function rules()
     {
         return [
-
             'txtName' => 'required|unique:products,name|max:100|regex:/(^[A-Za-z0-9 ]+$)+/',
             'txtPrice' => 'required|numeric|max:10000000000',
-            'fImages' => 'required|mimes:jpeg,jpg,png,gif|max:10240'
-
-
+            'fImages' => 'mimes:jpeg,jpg,png,gif|max:10240',
+            'txtDescription' => 'max:300'
         ];
     }
 
@@ -43,9 +41,9 @@ class ProductRequest extends Request
             'txtPrice.required' => 'Please enter the the product price !!',
             'txtPrice.numeric' => 'The Price must number!!',
             'txtPrice.max' => 'The Price max is 10 digits',
-            'fImages.required' => 'The Product Images is not null',
             'fImages.mimes' => 'The Images not in proper format!!',
-            'fImages.max' => 'The size Images is to 10 MB'
+            'fImages.max' => 'The size Images is to 10 MB',
+            'txtDescription.max' => 'Description is max 300 ditgits'
         ];
     }
 
